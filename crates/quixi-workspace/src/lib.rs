@@ -593,7 +593,7 @@ impl TranscriptSearchEngine {
                     let cwd = if candidate_cwd.is_dir() {
                         candidate_cwd.to_string_lossy().to_string()
                     } else {
-                        "/Users/eric/quixi-desk".to_string()
+                        quixi_proto::paths::default_workspace_str().to_string()
                     };
 
                     let mut extracted_title: Option<String> = None;
@@ -719,7 +719,7 @@ mod tests {
 
     #[test]
     fn test_file_index_git_and_shell_engines() {
-        let root = Path::new("/Users/eric/quixi-desk");
+        let root = Path::new(quixi_proto::paths::default_workspace_str());
         let files = FileIndexEngine::list_files(root, Some("Cargo.toml"), 20);
         assert!(!files.is_empty());
 
